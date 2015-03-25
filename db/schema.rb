@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150323165440) do
+ActiveRecord::Schema.define(version: 20150325044040) do
+
+  create_table "activities", force: :cascade do |t|
+    t.integer  "activity_id"
+    t.string   "activity_name"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "responsibles"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -30,6 +40,14 @@ ActiveRecord::Schema.define(version: 20150323165440) do
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+
+  create_table "contacts", force: :cascade do |t|
+    t.integer  "contact_id"
+    t.string   "contact_name"
+    t.integer  "project_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string   "project_name"

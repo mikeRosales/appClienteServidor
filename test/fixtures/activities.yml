@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  activity_id: 1
+  activity_name: MyString
+  start_date: 2015-03-24
+  end_date: 2015-03-24
+  responsibles: MyString
+
+two:
+  activity_id: 1
+  activity_name: MyString
+  start_date: 2015-03-24
+  end_date: 2015-03-24
+  responsibles: MyString
