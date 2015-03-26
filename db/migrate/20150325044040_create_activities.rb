@@ -6,6 +6,7 @@ class CreateActivities < ActiveRecord::Migration
       t.date :start_date
       t.date :end_date
       t.string :responsibles
+      t.string :status
 
       t.timestamps null: false
     end
