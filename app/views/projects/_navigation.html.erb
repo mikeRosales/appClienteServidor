@@ -1,0 +1,20 @@
+<nav class="top-bar">
+	<ul class="title-area">
+		<li class="name">
+			<h1>Scrum</h1>
+		</li>
+	</ul>
+	<section class="top-bar-section">
+		
+			<ul class="right">
+					
+					<li><%=link_to'Proyectos',controller:'/projects',action:'index'%></li>
+					<li><%=link_to'Contactos',controller:'/contacts',action:'index'%></li>
+					<li><%=link_to'Actividades',controller:'/activities',action:'index'%></li>
+					<li><%=link_to'Calendarios'%></li>
+						<% if user_signed_in? %>
+						<li><%=link_to'Logout',destroy_user_session_path, method: :delete %></li>
+						<% end %>
+				</ul>
+	</section>
+</nav>

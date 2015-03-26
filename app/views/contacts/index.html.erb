@@ -1,6 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Contacts</h1>
+<h1>Contactos</h1>
 
 <table>
   <thead>
@@ -15,10 +13,19 @@
     <% @contacts.each do |contact| %>
       <tr>
         <td><%= contact.contact_name %></td>
-        
-        <td><%= link_to 'Show', contact %></td>
-        <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
-        <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          
+            <% if contact.project_id  %>
+              <a href="#"  data-reveal-id="">Ver mas</a>              
+               <div id="" class="reveal-modal" data-reveal>
+                <%= contact.project_id %>
+                <a class="close-reveal-modal">&#215;</a>
+              </div>
+           <% end %>
+          
+        </td>
+
+        <td><%= link_to 'X', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +33,4 @@
 
 <br>
 
-<%= link_to 'New Contact', new_contact_path %>
+
