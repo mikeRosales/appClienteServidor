@@ -1,25 +1,33 @@
-<h2>Inicio2</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<div class="row">
+  <div class="small-12 small-centered columns "> 
+    <h2>Iniciar Sesion</h2>
   </div>
+  <div class="small-5 small-centered columns "> 
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <%= f.label :Correo_Electronico %><br />
+        <%= f.email_field :email, autofocus: true %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+      <div class="field">
+        <%= f.label :Contraseña %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
-  No tienes cuenta crea una <a><%= link_to 'Aqui', 'sign_up' %></a>
-  <div class="actions">
-    <%= f.submit "Log in" %>
+      <% if devise_mapping.rememberable? -%>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :Recordar_Usuario %>
+        </div>
+      <% end -%>
+      No tienes cuenta crea una <a><%= link_to 'Aqui', 'sign_up' %></a>
+      <br/>
+      <br/>
+      <br/>
+      <div class="actions">
+        <button name="commit" type="submit" value="Ingresar">Ingresar</button>
+      </div>
   </div>
+</div>
 <% end %>
 
