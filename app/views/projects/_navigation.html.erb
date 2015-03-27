@@ -5,16 +5,47 @@
 		</li>
 	</ul>
 	<section class="top-bar-section top-bar-section-custom">
+	<ul class="left">
+	<% if user_signed_in? %>
+			<li class="has-dropdown not-click"><a href="#">Projectos</a>
+				<ul class="dropdown">
+					<li class="parent-link-show-for-small-only"><a class="parent-link js-generated" href="#">Projects</a></li>
+					<li><%=link_to'Ver',controller:'/projects',action:'index'%></li>
+					<li><%=link_to'Nuevo',controller:'/projects',action:'new'%></li>
+				</ul>
+			
+			</li>
+			<li class="divider"></li>
+			<li class="has-dropdown not-click"><a href="#">Contactos</a>
+				<ul class="dropdown">
+					<li class="parent-link-show-for-small-only"><a class="parent-link js-generated" href="#">Contacts</a></li>
+					<li><%=link_to'Ver',controller:'/contacts',action:'index'%></li>
+					<li><%=link_to'Nuevo',controller:'/contacts',action:'new'%></li>
+				</ul>
+			
+			</li>
+			<li class="divider"></li>
+			<li class="has-dropdown not-click"><a href="#">Actividades</a>
+				<ul class="dropdown">
+					<li class="parent-link-show-for-small-only"><a class="parent-link js-generated" href="#">Activities</a></li>
+					<li><%=link_to'Ver',controller:'/activities',action:'index'%></li>
+					<li><%=link_to'Nuevo',controller:'/activities',action:'new'%></li>
+				</ul>
+			
+			</li>
+			<li class="divider"></li>
 		
+<% end %>
+</ul>
 			<ul class="right">
+				
+					<% if user_signed_in? %>
 					
-					<li><%=link_to'Proyectos',controller:'/projects',action:'index'%></li>
-					<li><%=link_to'Contactos',controller:'/contacts',action:'index'%></li>
-					<li><%=link_to'Actividades',controller:'/activities',action:'index'%></li>
+					<li><a>Usuario: <%= current_user.email %></a></li>
 					<li><%=link_to'Calendarios'%></li>
-						<% if user_signed_in? %>
-						<li><%=link_to'Logout',destroy_user_session_path, method: :delete %></li>
-						<% end %>
+					<li><%=link_to'Cerrar sesion',destroy_user_session_path, method: :delete %></li>
+					<% end %>
+
 				</ul>
 	</section>
 </nav>

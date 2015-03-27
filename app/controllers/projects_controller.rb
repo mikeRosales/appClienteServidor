@@ -1,12 +1,25 @@
 class ProjectsController < ApplicationController
-  before_action :authenticate_user!
+before_action :auth_user!
 
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
+ def auth_user!
+      if admin_signed_in?
+        authenticate_admin!
+      else
+        authenticate_user!
+      end
+  end
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    
+     if admin_signed_in?
+      @projects = Project.all
+    else
+     @projects = current_user.projects
+    end
+    
   end
 
   # GET /projects/1
@@ -27,6 +40,8 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(project_params)
+    @project.user_id = current_user.id
+    
 
     respond_to do |format|
       if @project.save
