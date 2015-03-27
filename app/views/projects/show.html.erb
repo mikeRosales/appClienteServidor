@@ -1,48 +1,24 @@
-<div class="row">
-	<div class="small-12 large-centered columns">
-		<h2>Detalles</h2>
-	</div>
-	<div class="small-6 columns">
-		<p>
-		  <strong>Nombre del Proyecto:</strong>
-		  <%= @project.project_name %>
-		</p>
-	</div>
-	<div class="small-6 columns">
-		<p>
-		  <strong>Nombre de la Empresa:</strong>
-		  <%= @project.company %>
-		</p>
-	</div>
-	<div class="small-6 columns">
-		<p>
-		  <strong>Descripcion:</strong>
-		  <%= @project.description %>
-		</p>
-	</div>
-	<div class="small-6 columns">
-		<p>
-		  <strong>Participantes:</strong>
-		  <%= @project.participants %>
-		</p>
-	</div>
-</div>
-<div class="row">
-	<div class="small-12 medium-centered columns">
-		<div class="participantes">
-			<ul class="list">
-				<li>Steven A. Peterson <i class="icon-cross"></i> </li>
-				<li>Leslie W. Neal <i class="icon-cross"></i></li>
-				<li>Tina J. Moore <i class="icon-cross"></i></li>
-			</ul>
-		</div>
-	</div>
-</div>
-<div class="row">
-	<button class="fontButton">
-		<%= link_to 'Edit', edit_project_path(@project) %>
-	</button>
-	<button class="fontButton">
-		<%= link_to 'Back', projects_path %>
-	</button>
-</div>
+
+
+<p>
+  <strong>Project name:</strong>
+  <%= @project.project_name %>
+</p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @project.company %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @project.description %>
+</p>
+
+<p>
+  <strong>Participants:</strong>
+  <%= @project.participants %>
+</p>
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

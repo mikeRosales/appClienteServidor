@@ -10,16 +10,13 @@
       </ul>
     </div>
   <% end %>
-<div class="row">
-  <div class="small-8 medium-centered columns">
-    <div class="field">
-      <%= f.label :Nombre_del_Contacto %><br>
-      <%= f.text_field :contact_name %>
-    </div>
-   
-    <div class="actions">
-      <button name="commit" type="submit" value="Ingresar">Agregar</button>
-    </div>
+
+  <div class="field">
+    <%= f.label :contact_name %><br>
+    <%= f.text_field :contact_name %>
   </div>
-</div>
+ 
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>

@@ -1,35 +1,35 @@
 <p id="notice"><%= notice %></p>
-<div class="row">
-  <h2>Lista de Actividades</h2>
 
-  <table class="table-custom">
-    <thead>
-      <tr class="titulo">
-        <th><span>N° Actividad</span> </th>
-        <th><span>Nombre</span></th>
-        <th><span>Fecha de Inicio</span></th>
-        <th><span>Fecha de Termino</span></th>
-        <th><span>Responsables</span></th>
-        <th colspan="3"></th>
+<h1>Listing Activities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Activity</th>
+      <th>Activity name</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Responsibles</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @activities.each do |activity| %>
+      <tr>
+        <td><%= activity.activity_id %></td>
+        <td><%= activity.activity_name %></td>
+        <td><%= activity.start_date %></td>
+        <td><%= activity.end_date %></td>
+        <td><%= activity.responsibles %></td>
+        <td><%= link_to 'Show', activity %></td>
+        <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
+        <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    </thead>
+    <% end %>
+  </tbody>
+</table>
 
-    <tbody>
-      <% @activities.each do |activity| %>
-        <tr>
-          <td><%= activity.activity_id %></td>
-          <td><%= activity.activity_name %></td>
-          <td><%= activity.start_date %></td>
-          <td><%= activity.end_date %></td>
-          <td><%= activity.responsibles %></td>
-          <td><%= link_to 'Show', activity %></td>
-          <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
-          <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
 <br>
 
 <%= link_to 'New Activity', new_activity_path %>

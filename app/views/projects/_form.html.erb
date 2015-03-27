@@ -10,27 +10,24 @@
       </ul>
     </div>
   <% end %>
-<div class="row">
-  <div class="small-10 medium-centered columns">
-    <div class="field">
-      <%= f.label :Nombre_del_Proyecto %><br>
-      <%= f.text_field :project_name %>
-    </div>
-    <div class="field">
-      <%= f.label :Nombre_de_la_Empresa %><br>
-      <%= f.text_field :company %>
-    </div>
-    <div class="field">
-      <%= f.label :Descripcion %><br>
-      <%= f.text_field :description %>
-    </div>
-    <div class="field">
-      <%= f.label :Participantes %><br>
-      <%= f.text_field :participants %>
-    </div>
-    <div class="actions">
-      <button name="commit" type="submit">Guardar</button>
-    </div>
+
+  <div class="field">
+    <%= f.label :project_name %><br>
+    <%= f.text_field :project_name %>
   </div>
-</div>
+  <div class="field">
+    <%= f.label :company %><br>
+    <%= f.text_field :company %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :participants %><br>
+    <%= f.text_field :participants %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>
