@@ -1,6 +1,6 @@
 color-font = #FFFCE1
 color-font-sm = #F8F8F8
-color-base = #373A47
+color-base = #333333
 color-hover= #008CBA
 
 /* --- iconos --- */
@@ -235,18 +235,66 @@ icomoon()
 	content icon-emergencia
 	icomoon()html
 	font-family: 'Lato', sans-serif;
-a:hover
-	background-color transparent
-	color #0080FF
 h1
 	color white
 h2
 	font-family: 'Open Sans', sans-serif;
-
+	margin-bottom 50px
+p
+	font-size 16px
+	margin-top 5px
 .top-bar-section-custom
 	ul
 		&.right
 			li
 				a:hover
-					color color-hover
+					color color-hover !important
+.table-custom
+		width 100%
+		margin-top 10px
+		thead
+			tr
+				border 1px solid #D6D6D6
+				
+				&.titulo
+					background-color color-base
+					span
+						color #fff
+				th.min
+					width 100px
+		tbody
+			tr
+				td
+					a
+						color #000 !important
+						&:hover
+							background-color transparent
+							color color-hover !important
+								
+button
+	&.fontButton
+		a
+			color #fff !important
+			background-color none
+			&:hover
+				background-color transparent
+.participantes
+	width 80%
+	height 150px
+	border 1px solid #C3C3C3
+	border-radius 5px
+	margin-top 25px
+	margin-bottom 30px
+.list
+	list-style none
+	li
+		margin-top 15px
+		font-size 16px
+		i
+			float right
+			margin-right 20px
+			color red
+			font-size 16px
+			&:hover
+				cursor  pointer
 				

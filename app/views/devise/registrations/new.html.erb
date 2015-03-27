@@ -1,60 +1,65 @@
-<h2>Sign up</h2>
+<div class="small-10 small-centered columns "> 
+  <h2>Formulario de Registro</h2>
+</div>
+<br/>
+<br/>
+<div class="small-10 small-centered columns "> 
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+     <div class="small-6 columns">
+      <div class="field">
+        <%= f.label :Correo_Electronico %>
+        <%= f.text_field :email %>
+      </div>
+    </div>
+    <div class="small-6 columns">
+      <div class="field">
+        <%= f.label :Empresa_o_Institucion_Academica %>
+        <%= f.text_field :organization %>
+      </div>
+    </div>
+    <div class="small-4 columns">
+      <div class="field">
+        <%= f.label :Nombre %><br>
+        <%= f.text_field :name %>
+      </div>
+    </div>
+    <div class="small-4 columns">
+      <div class="field">
+        <%= f.label :Apellido_Paterno %><br>
+        <%= f.text_field :first_surname %>
+      </div>
+    </div>
+    <div class="small-4 columns">
+      <div class="field">
+        <%= f.label :Apellido_Materno %><br>
+        <%= f.text_field :second_surname %>
+      </div>
+    </div>
+    <div class="small-4 columns">
+      <div class="field">
+        <%= f.label :Usuario %><br>
+        <%= f.text_field :user_name %>
+      </div>
+    </div>
+    <div class="small-4 columns">
+      <div class="field">
+        <%= f.label :Contraseña %><br>
+        <%= f.text_field :password %>
+      </div>
+    </div>
+    <div class="small-4 columns">
+      <div class="field">
+        <label>Confirmar Contraseña</label>
+        <br>
+         <%= text_field_tag :Confirmar_Contraseña %>
+      </div>
+    </div>
 
-   <div class="small-6 columns">
-    <div class="field">
-      <%= f.label :Correo_Electronico %>
-      <%= f.text_field :email %>
+    <div class="actions">
+      <button name="commit" type="submit" value="registrarse">Registrar</button>
     </div>
-  </div>
-  <div class="small-6 columns">
-    <div class="field">
-      <%= f.label :Empresa_o_Institucion_Academica %>
-      <%= f.text_field :organization %>
-    </div>
-  </div>
-  <div class="small-4 columns">
-    <div class="field">
-      <%= f.label :Nombre %><br>
-      <%= f.text_field :name %>
-    </div>
-  </div>
-  <div class="small-4 columns">
-    <div class="field">
-      <%= f.label :Apellido_Paterno %><br>
-      <%= f.text_field :first_surname %>
-    </div>
-  </div>
-  <div class="small-4 columns">
-    <div class="field">
-      <%= f.label :Apellido_Materno %><br>
-      <%= f.text_field :second_surname %>
-    </div>
-  </div>
-  <div class="small-4 columns">
-    <div class="field">
-      <%= f.label :Usuario %><br>
-      <%= f.text_field :user_name %>
-    </div>
-  </div>
-  <div class="small-4 columns">
-    <div class="field">
-      <%= f.label :Contraseña %><br>
-      <%= f.text_field :password %>
-    </div>
-  </div>
-  <div class="small-4 columns">
-    <div class="field">
-      <label>Confirmar Contraseña</label>
-      <br>
-       <%= text_field_tag :Confirmar_Contraseña %>
-    </div>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+</div>
 <% end %>
 
