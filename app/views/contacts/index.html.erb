@@ -1,7 +1,18 @@
 <div class="row">
   <h2>Contactos</h2>
-  
+
   <div class="small-8 medium-centered columns">
+<div class="field">
+            <label>Agregar compañeros</label>
+            <%= text_field_tag :contact_name %>
+            <button name="add" type="submit" value="Ingresar">Agregar</button>
+            
+    </div>
+<div class="field">
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+
+</div>
   <table class="table-custom">
       <thead>
         <tr class="titulo">
@@ -16,15 +27,33 @@
         <tr>
           <td><%= contact.contact_name %></td>
           <td>
-              <% if contact.project_id  %>
-                <a href="#"  data-reveal-id="">Ver mas</a>              
-                 <div id="" class="reveal-modal" data-reveal>
-                  <%= contact.project_id %>
-                  <a class="close-reveal-modal">&#215;</a>
-                </div>
-             <% end %>
-            
-          </td>
+         <% if contact.id %>
+            <a href="#"  data-reveal-id="myModal">Ver detalles</a>              
+            <div id="myModal" class="reveal-modal" data-reveal>
+            <table "table-custom">
+            <caption>Detalles</caption>
+                <thead>
+                <th>Nombre</th>
+                <th><%= Contact.find(contact.id).contact_name %></th>
+                  <tr class="titulo">
+                    <th><span>Proyecto</span> </th>
+                    <th><span>Actividad</span></th>
+                    <th><span>Estatus</span></th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    </tr>
+                </tbody>
+              </table>
+              
+              
+            </div>
+          <% end %>
+        </td>
 
           <td><%= link_to 'X', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>

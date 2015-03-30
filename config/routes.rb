@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :backlogs
+
+  resources :wishlists
+
+  resources :calendars
+
   resources :activities
 
   resources :contacts

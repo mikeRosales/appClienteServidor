@@ -1,0 +1,34 @@
+<div class="row">
+<h1>Backlogs</h1>
+<div class="small-10 large-centered columns">
+<table class="table-custom">
+    <thead>
+      <tr class="titulo">
+        <th><span>Actividad</span> </th>
+        <th><span>Responsable</span></th>
+        <th colspan="2"><span></span></th>
+      </tr>
+    </thead>
+      <tbody>
+        <% @backlogs.each do |backlog| %>
+          <tr>
+            <td></td>
+            <td></td>
+            
+            
+           
+            
+           <td><%= link_to 'X', backlog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+           <td></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+<br>
+
+<%= link_to 'Agregar', new_backlog_path %>
+<div class="actions">
+      <button name="commit" type="submit" value="siguiente">Siguiente</button>
+    </div>
+    </div>
+    </div>

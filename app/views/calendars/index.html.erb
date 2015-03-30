@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Calendars</h1>
+<div>
+<%= month_calendar do |date| %>
+<%= date %>
+<% end %>
+</div>
+<div>
+  <p>filtros</p>
+  <select name="post[category]">
+  <option></option>
+  <option>proyecto 1</option>
+  <option>proyecto2</option>
+</select>
+</div>
+<div>
+<%= check_box_tag(:to_do) %>
+<%= label_tag(:to_do, "Por hacer") %>
+<%= check_box_tag(:doing) %>
+<%= label_tag(:doing, "Haciendo") %>
+<%= check_box_tag(:done) %>
+<%= label_tag(:done, "Hechos") %>
+</div>
+<br>
+
+

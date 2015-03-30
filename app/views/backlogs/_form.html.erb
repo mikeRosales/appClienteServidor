@@ -1,10 +1,10 @@
-<%= form_for(@activity) do |f| %>
-  <% if @activity.errors.any? %>
+<%= form_for(@backlog) do |f| %>
+  <% if @backlog.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
+      <h2><%= pluralize(@backlog.errors.count, "error") %> prohibited this backlog from being saved:</h2>
 
       <ul>
-      <% @activity.errors.full_messages.each do |message| %>
+      <% @backlog.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>

@@ -20,7 +20,7 @@
 				<ul class="dropdown">
 					<li class="parent-link-show-for-small-only"><a class="parent-link js-generated" href="#">Contacts</a></li>
 					<li><%=link_to'Ver',controller:'/contacts',action:'index'%></li>
-					<li><%=link_to'Nuevo',controller:'/contacts',action:'new'%></li>
+					
 				</ul>
 			
 			</li>
@@ -42,7 +42,7 @@
 					<% if user_signed_in? %>
 					
 					<li><a>Usuario: <%= current_user.email %></a></li>
-					<li><%=link_to'Calendarios'%></li>
+					<li><%=link_to'Calendarios',controller:'/calendars',action:'index'%></li>
 					<li><%=link_to'Cerrar sesion',destroy_user_session_path, method: :delete %></li>
 					<% end %>
 
