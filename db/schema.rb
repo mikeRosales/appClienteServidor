@@ -11,16 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150330050721) do
+ActiveRecord::Schema.define(version: 20150330150222) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "activity_name"
     t.date     "start_date"
     t.date     "end_date"
     t.string   "responsibles"
-    t.string   "status"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "status"
   end
 
   create_table "admins", force: :cascade do |t|
@@ -90,6 +90,16 @@ ActiveRecord::Schema.define(version: 20150330050721) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "users_activities", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "activity_id"
+  end
+
+  create_table "users_contacts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "contact_id"
+  end
 
   create_table "users_projects", force: :cascade do |t|
     t.integer  "project_id"
