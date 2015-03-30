@@ -13,7 +13,7 @@
 <div class="row">
   <div class="small-12 medium-centered columns">
     
-    <div class="small-6 columns">
+    <div class="small-12 columns">
       <div class="field">
         <%= f.label :Nombre_de_la_Actividad %><br>
         <%= f.text_field :activity_name %>
@@ -34,15 +34,14 @@
     <div class="small-12 columns">
       <div class="field">
         <%= f.label :Responsables %><br>
-         <button name="add" type="submit" >Agregar</button>
+         <button name="add" type="submit" ><i class="icon-user-tie" ></i></button>
         <%= f.text_field :responsibles %>
-         
       </div>
       <div id="grid_here" >
               </div>
     </div>
     <div class="row">
-      <div class="small-8 columns">
+      <div class="small-12 columns">
         <div class="actions">
           <button name="commit" type="submit" >Crear Actividad</button>
         </div>

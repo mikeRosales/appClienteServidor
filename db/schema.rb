@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 20150330050721) do
     t.date     "start_date"
     t.date     "end_date"
     t.string   "responsibles"
+    t.string   "status"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.string   "status"
   end
 
   create_table "admins", force: :cascade do |t|

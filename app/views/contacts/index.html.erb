@@ -2,14 +2,13 @@
   <h2>Contactos</h2>
 
   <div class="small-8 medium-centered columns">
+  <div class="field">
+    <label>Agregar compañeros</label>
+    <%= text_field_tag :contact_name %>
+    <button name="add" type="submit" value="Ingresar">Agregar</button>  
+  </div>
 <div class="field">
-            <label>Agregar compañeros</label>
-            <%= text_field_tag :contact_name %>
-            <button name="add" type="submit" value="Ingresar">Agregar</button>
-            
-    </div>
-<div class="field">
-  <%= label_tag(:q, "Search for:") %>
+  <%= label_tag(:q, "Buscar") %>
   <%= text_field_tag(:q) %>
 
 </div>
@@ -29,33 +28,40 @@
           <td>
          <% if contact.id %>
             <a href="#"  data-reveal-id="myModal">Ver detalles</a>              
-            <div id="myModal" class="reveal-modal" data-reveal>
-            <table "table-custom">
-            <caption>Detalles</caption>
-                <thead>
-                <th>Nombre</th>
-                <th><%= Contact.find(contact.id).contact_name %></th>
-                  <tr class="titulo">
-                    <th><span>Proyecto</span> </th>
-                    <th><span>Actividad</span></th>
-                    <th><span>Estatus</span></th>
-                  </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    </tr>
-                </tbody>
-              </table>
-              
-              
-            </div>
+            <div id="myModal" class="reveal-modal reveal-modal-custom" data-reveal>
+              <div class="row">
+                <section class="pop-head">
+                  <label><%= Contact.find(contact.id).contact_name %></label>
+                </section>
+                <section class="pop-body">
+                  <table class="table-custom">
+                  <caption>Detalles</caption>
+                    <thead>
+                      <tr class="titulo">
+                        <th><span>Proyecto</span> </th>
+                        <th><span>Actividad</span></th>
+                        <th><span>Estatus</span></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        </tr>
+                    </tbody>
+                  </table>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <button>Aceptar</button>
+                </section>
+                </div>
+              </div>
           <% end %>
         </td>
 
-          <td><%= link_to 'X', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'X', contact, method: :delete, data: { confirm: '¿Estas Seguro de realizar la siguiente operacion?' } %></td>
         </tr>
       <% end %>
     </tbody>
