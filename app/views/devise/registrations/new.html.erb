@@ -6,15 +6,13 @@
 <div class="small-8 small-centered columns "> 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
-
-     <div class="small-12 columns">
+<div class="small-12 columns">
       <div class="field">
         <%= f.label :Correo_Electronico %>
         <%= f.text_field :email %>
       </div>
     </div>
-  
-    <div class="small-12 columns">
+  <div class="small-12 columns">
       <div class="field">
         <%= f.label :Contraseña %><br>
         <%= f.text_field :password %>
@@ -26,9 +24,11 @@
         <br>
          <%= text_field_tag :Confirmar_Contraseña %>
       </div>
+  
+ 
     </div>
 
-    <div class="actions">
+     <div class="actions">
       <button name="commit" type="submit" value="registrarse">Registrar</button>
     </div>
 </div>

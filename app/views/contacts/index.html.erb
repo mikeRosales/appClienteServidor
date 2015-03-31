@@ -1,12 +1,7 @@
 <div class="row">
   <h2>Contactos</h2>
 
-  <div class="small-8 medium-centered columns">
-  <div class="field">
-    <label>Agregar compañeros</label>
-    <%= text_field_tag :contact_name %>
-    <button name="add" type="submit" value="Ingresar">Agregar</button>  
-  </div>
+  
 <div class="field">
   <%= label_tag(:q, "Buscar") %>
   <%= text_field_tag(:q) %>
@@ -47,8 +42,8 @@
                         <tr>
                         <td><%= Project.find(contact.project_id).project_name%>
                              </td>
-                        <td></td>
-                        <td></td>
+                        <td><%= Activity.where(["project_id = ?", contact.project_id]).first.activity_name %></td>
+                        <td><%= Activity.where(["project_id = ?", contact.project_id]).first.status %></td>
                         </tr>
                     </tbody>
                   </table>
