@@ -1,4 +1,7 @@
 class Contact < ActiveRecord::Base
-	 has_and_belongs_to_many :activities
-	 has_and_belongs_to_many :projects
+	 belongs_to :"activities"
+	 belongs_to :"projects"
+	 belongs_to :"users"
+	
 end
+

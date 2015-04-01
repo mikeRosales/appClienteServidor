@@ -1,11 +1,42 @@
 
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @contact.contact_name %>
-</p>
+<table class="table-custom">
+      <thead>
+        <tr class="titulo">
+         <th><span>id</span></th>
+          <th><span>Nombre</span> </th>
+          <th><span>Proyecto</span></th>
+         
+        </tr>
+      </thead>
+   
+    <tbody>
+    
+          <tr>
+          		<td><%= @contact.id %></td>
+              <td><%= @contact.contact_name %></td>
+             
+
+               <% @proyecto = Project.find(@contact.project_id).project_name %>
+                 
+               <% if @proyecto.blank? %>
+                            <td></td>
+                            <% else %>
+                    <td><%= @proyecto %></td>
+             <% end %>
+           
+          </tr>
+           
+    </tbody>
+
+  
+  </table>
 
 
 
-<%= link_to 'Edit', edit_contact_path(@contact) %> |
-<%= link_to 'Back', contacts_path %>
+ 
+
+	
+	<button class="fontButton">
+		<%= link_to 'Regresar a contactos', projects_path %>
+	</button>

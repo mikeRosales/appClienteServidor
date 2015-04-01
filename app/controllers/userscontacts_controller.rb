@@ -1,18 +1,14 @@
-class ContactsController < ApplicationController
-   before_action :set_contact, only: [:show, :edit, :update, :destroy]
+class UserscontactsController < ApplicationController
+	  before_action :set_contact, only: [:show, :edit, :update, :destroy]
    protect_from_forgery with: :null_session
 
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.all
+   
   end
  
-  def search
-  @contact = Contact.find_by_contact_name params[:search_name]
-   render action: 'show'
- 
-  end
+
 
   # GET /contacts/1
   # GET /contacts/1.json
@@ -22,7 +18,7 @@ class ContactsController < ApplicationController
 
   # GET /contacts/new
   def new
-    @contact = Contact.new
+    @usercontact = Usercontact.new(users_contacts_params)
   end
 
   # GET /contacts/1/edit
@@ -32,14 +28,17 @@ class ContactsController < ApplicationController
   # POST /contacts
   # POST /contacts.json
   def create
-    @contact = Contact.new(contact_params)
+	
+	@usercontact.contact_id = :contact_id
+  	@usercontact.user_id = current_user.id
+   
+    
     respond_to do |format|
-      if @contact.save
-      format.html {  redirect_to :controller => :userscontacts, :action => :new, contact_id: @contact.id}
-        
-        format.json { render :show, status: :created, location: @contact }
+      if @usercontact.save
+        format.html { redirect_to redirect_to :controller => :contacts, :action => :show,  :contact_id => @contact.id}
+        format.json { render :show, status: :created, location: @usercontact }
       else
-        format.html { render :new }
+        format.html { redirect_to redirect_to :controller => :contacts, :action => :new }
         format.json { render json: @contact.errors, status: :unprocessable_entity }
       end
     end
@@ -54,7 +53,7 @@ class ContactsController < ApplicationController
         format.json { render :show, status: :ok, location: @contact }
       else
         format.html { render :edit }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
+        format.json { render json: @usercontact.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -64,19 +63,21 @@ class ContactsController < ApplicationController
   def destroy
     @contact.destroy
     respond_to do |format|
-      format.html { redirect_to contacts_url, notice: 'Contact was successfully destroyed.' }
+      format.html { redirect_to user_contacts_url, notice: 'Contact was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_contact
-      @contact = Contact.find(params[:id])
+    def set_users_contacts
+      @usercontact = Usercontact.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def contact_params
-      params.require(:contact).permit(:contact_name)
+    def users_contacts_params
+      params.require(:contact).permit(:id)
     end
 end
+
+
