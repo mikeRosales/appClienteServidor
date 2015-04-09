@@ -1,23 +1,34 @@
 class ContactsController < ApplicationController
    before_action :set_contact, only: [:show, :edit, :update, :destroy]
    protect_from_forgery with: :null_session
-
+before_action :auth_user!
   # GET /contacts
   # GET /contacts.json
-  def index
-    @contacts = Contact.all
+  def auth_user!
+      if admin_signed_in?
+        authenticate_admin!
+      else
+        authenticate_user!
+      end
   end
- 
+  def index
+    if admin_signed_in?
+      @contacts = Contact.all
+    else
+     @contacts = current_user.contacts
+    end
+  end
+
   def search
   @contact = Contact.find_by_contact_name params[:search_name]
    render action: 'show'
- 
+
   end
 
   # GET /contacts/1
   # GET /contacts/1.json
   def show
-    
+
   end
 
   # GET /contacts/new
@@ -33,10 +44,14 @@ class ContactsController < ApplicationController
   # POST /contacts.json
   def create
     @contact = Contact.new(contact_params)
+    @contact.user_id = current_user.id
+
     respond_to do |format|
       if @contact.save
-      format.html {  redirect_to :controller => :userscontacts, :action => :new, contact_id: @contact.id}
-        
+    @usercontact = Usercontact.new(usercontacts_params)
+
+      format.html {  redirect_to @contact, notice: 'Contact was successfully created.' }
+
         format.json { render :show, status: :created, location: @contact }
       else
         format.html { render :new }
@@ -58,7 +73,11 @@ class ContactsController < ApplicationController
       end
     end
   end
-
+  def usercontacts_params
+    params[:user_id] = current_user.id
+   params[:contact_id] = @contact.id
+    params.permit(:user_id, :contact_id)
+  end
   # DELETE /contacts/1
   # DELETE /contacts/1.json
   def destroy

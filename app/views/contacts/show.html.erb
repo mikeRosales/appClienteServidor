@@ -6,37 +6,37 @@
          <th><span>id</span></th>
           <th><span>Nombre</span> </th>
           <th><span>Proyecto</span></th>
-         
+
         </tr>
       </thead>
-   
+
     <tbody>
-    
+
           <tr>
           		<td><%= @contact.id %></td>
               <td><%= @contact.contact_name %></td>
-             
 
+        <% if @contact.project_id %>
                <% @proyecto = Project.find(@contact.project_id).project_name %>
-                 
+
                <% if @proyecto.blank? %>
                             <td></td>
                             <% else %>
                     <td><%= @proyecto %></td>
              <% end %>
-           
+           <% end %>
           </tr>
-           
+
     </tbody>
 
-  
+
   </table>
 
 
 
- 
 
-	
+
+
 	<button class="fontButton">
-		<%= link_to 'Regresar a contactos', projects_path %>
+		<%= link_to 'Regresar a contactos', contacts_path %>
 	</button>

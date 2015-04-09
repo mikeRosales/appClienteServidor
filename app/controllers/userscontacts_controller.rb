@@ -5,20 +5,20 @@ class UserscontactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-   
+
   end
- 
+
 
 
   # GET /contacts/1
   # GET /contacts/1.json
   def show
-    
+
   end
 
   # GET /contacts/new
   def new
-    @usercontact = Usercontact.new(users_contacts_params)
+
   end
 
   # GET /contacts/1/edit
@@ -28,11 +28,9 @@ class UserscontactsController < ApplicationController
   # POST /contacts
   # POST /contacts.json
   def create
-	
-	@usercontact.contact_id = :contact_id
-  	@usercontact.user_id = current_user.id
-   
-    
+
+
+
     respond_to do |format|
       if @usercontact.save
         format.html { redirect_to redirect_to :controller => :contacts, :action => :show,  :contact_id => @contact.id}
