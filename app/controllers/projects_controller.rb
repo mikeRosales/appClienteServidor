@@ -10,16 +10,21 @@ before_action :auth_user!
         authenticate_user!
       end
   end
+   def search
+  @project = Project.find_by_project_name params[:search_name]
+   render action: 'show'
+
+  end
   # GET /projects
   # GET /projects.json
   def index
-    
+
      if admin_signed_in?
       @projects = Project.all
     else
      @projects = current_user.projects
     end
-    
+
   end
 
   # GET /projects/1
@@ -41,7 +46,8 @@ before_action :auth_user!
   def create
     @project = Project.new(project_params)
     @project.user_id = current_user.id
-    
+    @project.status = "inicial"
+
 
     respond_to do |format|
       if @project.save
@@ -86,6 +92,6 @@ before_action :auth_user!
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:project_name, :company, :description, :participants)
+      params.require(:project).permit(:project_name, :company, :description, :participants, :dateStart, :dateEnd)
     end
 end

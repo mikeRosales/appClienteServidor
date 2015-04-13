@@ -96,6 +96,6 @@ before_action :auth_user!
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params
-      params.require(:contact).permit(:contact_name)
+      params.require(:contact).permit(:contact_name,:project_id)
     end
 end

@@ -17,7 +17,9 @@ gem 'devise'
 # Use jquery as the JavaScript library
 
 gem "simple_calendar", "~> 1.1.0"
+
 gem 'jquery-rails'
+
 gem 'cancancan','~> 1.10'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'

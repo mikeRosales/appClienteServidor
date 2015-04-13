@@ -2,14 +2,14 @@
 <div class="row">
   <h2>Proyectos</h2>
   <div class="small-10 large-centered columns">
-    <!--Campo de busqueda-->
+   <%= form_tag searchP_path, method: :post do %>
+  <%= text_field_tag :search_name, 'Nombre del proyecto' %>
+  <%= submit_tag "Buscar Proyecto" %>
+<% end %>
+
   </div>
 <div class="small-10 large-centered columns">
-<div class="field">
-  <%= label_tag(:q, "Buscar:") %>
-  <%= text_field_tag(:q)%>
 
-</div>
   <table class="table-custom">
     <thead>
       <tr class="titulo">
@@ -21,10 +21,14 @@
       <tbody>
         <% @projects.each do |project| %>
           <tr>
+
             <td><%= project.project_name %></td>
             <td>  <% if project.id %>
-            <a href="#"  data-reveal-id="myModal">Ver mas</a>
-            <div id="myModal" class="reveal-modal reveal-modal-custom" data-reveal>
+            <% @proyecto = Project.find_by_id(project.id).company %>
+
+               <a href="#"  data-reveal-id="<%= @proyecto %>">Ver mas</a>
+            <div id="<%= @proyecto %>" class="reveal-modal reveal-modal-custom" data-reveal>
+
               <div class="row">
                 <section class="pop-head">
                   <label>Detalles</label>
@@ -32,39 +36,35 @@
                 <section class="pop-body">
                   <div class="small-12 column">
                     <div class="field">
-                      <label>Nombre de la empresa:</label>
+                      <label>Nombre de la empresa: <%= project.company %></label>
+
                     </div>
                   </div>
-                  <div class="small-6 column">
+
+
+
+                  <div class="small-12 column">
                     <div class="field">
-                      <label>Fecha de Inicio:</label>
-                    </div>
-                  </div>
-                  <div class="small-6 column">
-                    <div class="field">
-                      <label>Fecha de fin:</label>
+                      <label>Descripcion: <%= project.description %></label>
                     </div>
                   </div>
                   <div class="small-12 column">
                     <div class="field">
-                      <label>Participantes</label>
-                    </div>
-                  </div>
-                  <div class="small-12 columns">
+                      <label>Participantes: </label>
+
                     <div id="grid_here" >
                       <div class="wishList-items">
-                        <ul>
-                          <li>Item 1<i class="icon-cross"></i></li>
-                          <li>Item 2<i class="icon-cross"></i></li>
-                          <li>Item 3<i class="icon-cross"></i></li>
-                        </ul>
+                        <%= project.participants %>
                       </div>
                     </div>
+                    </div>
                   </div>
-                      <button name="commit" type="submit" class="align-top">Aceptar</button>
-                  </div>
+
+
                 </section>
+
             </div>
+          </div>
           <% end %>
           </td>
            <td><%= link_to 'X', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,7 +1,7 @@
 <%= form_for(@backlog) do |f| %>
   <% if @backlog.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@backlog.errors.count, "error") %> prohibited this backlog from being saved:</h2>
+      <h2><%= pluralize(@backlog.errors.count, "error") %> prohibited this activity from being saved:</h2>
 
       <ul>
       <% @backlog.errors.full_messages.each do |message| %>
@@ -12,8 +12,13 @@
   <% end %>
 <div class="row">
   <div class="small-12 medium-centered columns">
-    
-    <div class="small-6 columns">
+    <div class="small-12 columns">
+      <div class="field">
+  <%= f.label :Proyecto_al_cual_agregara_la_actividad %><br>
+   <%=  f.collection_select(:project_id, current_user.projects, :id, :project_name) %>
+   </div>
+   </div>
+    <div class="small-12 columns">
       <div class="field">
         <%= f.label :Nombre_de_la_Actividad %><br>
         <%= f.text_field :activity_name %>
@@ -33,22 +38,15 @@
     </div>
     <div class="small-12 columns">
       <div class="field">
-        <%= f.label :Responsables %><br>
-        <button class="align-top-min"><i class="icon-user-tie"></i></button>
+        <%= f.label :Responsable %><br>
+
+        <%= f.text_field :responsibles %>
       </div>
-      <div class="small-12 columns">
-        <div id="grid_here" >
-          <div class="wishList-items">
-            <ul>
-              <li>Item 1<i class="icon-spinner"></i><i class="icon-cross"></i></i></li>
-              <li>Item 2<i class="icon-spinner"></i><i class="icon-cross"></i></i></li>
-              <li>Item 3<i class="icon-spinner"></i><i class="icon-cross"></i></i></li>
-            </ul>
-        </div>
-      </div>
+      <div id="grid_here" >
+              </div>
     </div>
     <div class="row">
-      <div class="small-8 columns">
+      <div class="small-12 columns">
         <div class="actions">
           <button name="commit" type="submit" >Crear Actividad</button>
         </div>
