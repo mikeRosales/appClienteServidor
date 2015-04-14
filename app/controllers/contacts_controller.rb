@@ -46,21 +46,19 @@ before_action :auth_user!
     @contact = Contact.new(contact_params)
     @contact.user_id = current_user.id
 
-        respond_to do |format|
-          if @contact.save
-              @usercontact = Usercontact.new(usercontacts_params)
+    respond_to do |format|
+      if @contact.save
+    @usercontact = Usercontact.new(usercontacts_params)
 
-           format.html {  redirect_to @contact, notice: 'Contacto agregado correctamente.' }
+      format.html {  redirect_to @contact, notice: 'Contact was successfully created.' }
 
-             format.json { render :show, status: :created, location: @contact }
-        else
-          format.html { render :new }
-          format.json { render json: @contact.errors, status: :unprocessable_entity }
+        format.json { render :show, status: :created, location: @contact }
+      else
+        format.html { render :new }
+        format.json { render json: @contact.errors, status: :unprocessable_entity }
       end
-
+    end
   end
-
-end
 
   # PATCH/PUT /contacts/1
   # PATCH/PUT /contacts/1.json
