@@ -41,12 +41,16 @@ gem 'kaminari'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-
+<<<<<<< HEAD
     gem 'sqlite3'
 end
 
 group :production do
     gem 'pg'
+=======
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug'
+>>>>>>> parent of 3ec12b7... prueba
 
 end
 

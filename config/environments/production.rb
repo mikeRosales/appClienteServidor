@@ -76,9 +76,9 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
+<<<<<<< HEAD
 
     config.serve_static_files = true
-
-
+=======
+>>>>>>> parent of 3ec12b7... prueba
 end
