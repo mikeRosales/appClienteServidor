@@ -17,8 +17,7 @@
       <%= f.label :Nombre_del_Contacto %><br>
       <%= f.text_field :contact_name %>
     </div>
-     <%= f.label :Seleccione_a_cual_proyecto_agregarlo %><br>
-   <%=  f.collection_select(:project_id, current_user.projects, :id, :project_name) %>
+   
     <div class="actions">
       <button name="commit" type="submit" value="Ingresar">Agregar</button>
     </div>

@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   get 'projects/index'
 
   post 'search' => 'contacts#search'
-  post 'searchP' => 'projects#search'
 
   devise_for :users
 

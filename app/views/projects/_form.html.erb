@@ -26,28 +26,15 @@
     </div>
     <div class="small-10 columns">
       <div class="field">
-         <%= f.label :Fecha_inicio %><br>
-        <%= f.date_field  :dateStart %>
-        <br>
-
-      </div>
-    </div>
-    <div class="small-10 columns">
-      <div class="field">
-         <%= f.label :Fecha_fin %><br>
-        <%= f.date_field  :dateEnd %>
-        <br>
-
-      </div>
-    </div>
-
-    <div class="small-10 columns">
-      <div class="field">
         <%= f.label :Participantes %><br>
         <%= f.text_field :participants %>
       </div>
     </div>
-
+    <div class="small-2 columns">
+      <div class="field">
+        <button class="align-top"><i class="icon-user-tie"></i></button>
+      </div>
+    </div>
     <div class="small-12 columns">
       <div class="actions">
         <button name="commit" type="submit" class="right">Siguiente</button>
