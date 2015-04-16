@@ -52,8 +52,8 @@
 
                               <tr>
                                 <% @proyecto = Project.find(contact.project_id).project_name %>
-                                <% @actividad = Activity.find_by_project_id(contact.project_id).activity_name %>
-                                <%@estatus = Activity.find_by_project_id(contact.project_id).status %>
+                                <% @actividad = Activity.find_by_project_id(contact.project_id)%>
+                                <%@estatus = Activity.find_by_project_id(contact.project_id) %>
                                 <% if @proyecto.blank? %>
                                   <td></td>
                                 <% else %>
@@ -62,12 +62,12 @@
                                 <% if @actividad.blank? %>
                                   <td></td>
                                 <% else %>
-                                  <td><%= @actividad %></td>
+                                  <td><%= @actividad.activity_name %></td>
                                 <% end %>
                                 <% if @estatus.blank? %>
                                   <td></td>
                                 <% else %>
-                                  <td><%= @estatus %></td>
+                                  <td><%= @estatus.status %></td>
                                 <% end %>
                               </tr>
                             </tbody>

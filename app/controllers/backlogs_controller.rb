@@ -69,6 +69,6 @@ class BacklogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def backlog_params
-      params[:backlog]
+      params.require(:backlog).permit(:activity_name,:project_id,:start_date,:end_date,:responsibles)
     end
 end

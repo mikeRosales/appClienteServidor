@@ -1,5 +1,5 @@
 <div class="row">
-  <h2>Lista de Actividades</h2>
+  <h2>Actividades</h2>
   <div class="field">
     <%= label_tag(:q, "Buscar proyectos:") %>
     <%= text_field_tag(:q) %>
@@ -12,9 +12,11 @@
     <div id="grid_here" >
       <div class="wishList-items">
         <ul>
-          <li>Item 1<a href="">Ver Mas</a></li>
-          <li>Item 2<a href="">Ver Mas</a></li>
-          <li>Item 3<a href="">Ver Mas</a></li>
+        <% @collection = Activity.find_by_sql(["select * from activities where status = 'por hacer'"]) %>
+          <% @collection.each do |item|%>
+          <%= content_tag(:li, item.activity_name) %>
+          <% end %>
+
         </ul>
       </div>
     </div>
@@ -24,9 +26,13 @@
     <div id="grid_here" >
       <div class="wishList-items">
         <ul>
-          <li>Item 1<a href="">Ver Mas</a></li>
-          <li>Item 2<a href="">Ver Mas</a></li>
-          <li>Item 3<a href="">Ver Mas</a></li>
+          <ul>
+        <% @collection = Activity.find_by_sql(["select * from activities where status = 'haciendo'"]) %>
+          <% @collection.each do |item|%>
+          <%= content_tag(:li, item.activity_name) %>
+          <% end %>
+
+        </ul>
         </ul>
       </div>
     </div>
@@ -36,9 +42,10 @@
     <div id="grid_here" >
       <div class="wishList-items">
         <ul>
-          <li>Item 1<a href="">Ver Mas</a></li>
-          <li>Item 2<a href="">Ver Mas</a></li>
-          <li>Item 3<a href="">Ver Mas</a></li>
+            <% @collection = Activity.find_by_sql(["select * from activities where status = 'hecho'"]) %>
+          <% @collection.each do |item|%>
+          <%= content_tag(:li, item.activity_name) %>
+          <% end %>
         </ul>
       </div>
     </div>
