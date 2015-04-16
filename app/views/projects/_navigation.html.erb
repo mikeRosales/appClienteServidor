@@ -44,7 +44,7 @@
 					<% if user_signed_in? %>
 
 					<li><a><%= current_user.email %></a></li>
-					<li><%=link_to'Calendarios',controller:'/calendars',action:'index'%></li>
+
 					<li><%=link_to'Cerrar sesion',destroy_user_session_path, method: :delete %></li>
 					<% end %>
 
