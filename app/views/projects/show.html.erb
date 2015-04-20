@@ -14,7 +14,7 @@
 		  <%= @project.company %>
 		</p>
 	</div>
-	<div class="small-6 columns">
+	<div class="small-12 columns">
 		<p>
 		  <strong>Descripcion:</strong>
 		  <%= @project.description %>
@@ -22,8 +22,14 @@
 	</div>
 	<div class="small-6 columns">
 		<p>
-		  <strong>Participantes:</strong>
-		  <%= @project.participants %>
+		  <strong>Fecha de inicio:</strong>
+		  <%= @project.dateStart %>
+		</p>
+	</div>
+	<div class="small-6 columns">
+		<p>
+		  <strong>Fecha de termino:</strong>
+		  <%= @project.dateEnd %>
 		</p>
 	</div>
 </div>

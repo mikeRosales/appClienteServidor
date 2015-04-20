@@ -7,6 +7,7 @@
   <%= submit_tag "Buscar Proyecto" %>
 <% end %>
 
+
   </div>
 <div class="small-10 large-centered columns">
 
@@ -24,10 +25,10 @@
 
             <td><%= project.project_name %></td>
             <td>  <% if project.id %>
-            <% @proyecto = Project.find_by_id(project.id).company %>
-
-               <a href="#"  data-reveal-id="<%= @proyecto %>">Ver mas</a>
-            <div id="<%= @proyecto %>" class="reveal-modal reveal-modal-custom" data-reveal>
+            <% @proyecto = Project.find_by_id(project.id).project_name %>
+                 <%   @espacio = @proyecto.gsub(" ", "") %>
+               <a href=""  data-reveal-id="<%= @espacio %>">Ver mas</a>
+            <div id="<%= @espacio %>" class="reveal-modal reveal-modal-custom" data-reveal>
 
               <div class="row">
                 <section class="pop-head">
@@ -36,11 +37,22 @@
                 <section class="pop-body">
                   <div class="small-12 column">
                     <div class="field">
-                      <label>Nombre de la empresa: <%= project.company %></label>
+                      <label>Nombre de la empresa: <%= project.dateStart  %></label>
 
                     </div>
                   </div>
+                   <div class="small-6 column">
+                    <div class="field">
+                      <label>Fecha de inicio: <%= project.dateStart %></label>
 
+                    </div>
+                  </div>
+                   <div class="small-6 column">
+                    <div class="field">
+                      <label>Fecha de fin: <%= project.dateEnd %></label>
+
+                    </div>
+                  </div>
 
 
                   <div class="small-12 column">
@@ -48,17 +60,7 @@
                       <label>Descripcion: <%= project.description %></label>
                     </div>
                   </div>
-                  <div class="small-12 column">
-                    <div class="field">
-                      <label>Participantes: </label>
 
-                    <div id="grid_here" >
-                      <div class="wishList-items">
-                        <%= project.participants %>
-                      </div>
-                    </div>
-                    </div>
-                  </div>
 
 
                 </section>
@@ -67,6 +69,7 @@
           </div>
           <% end %>
           </td>
+          <td>  <%= link_to 'Editar', edit_project_path(project) %></td>
            <td><%= link_to 'X', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>

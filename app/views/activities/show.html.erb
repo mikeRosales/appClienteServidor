@@ -1,29 +1,39 @@
+<div class="small-12 columns">
+     <p>
+      <strong>Nombre:</strong>
+      <%= @activity.activity_name %>
+    </p>
+</div>
+<div class="small-12 columns">
+     <p>
+      <strong>Fecha de inicio:</strong>
+      <%= @activity.start_date %>
+      </p>
 
+</div>
 
-<p>
-  <strong>Activity:</strong>
-  <%= @activity.id %>
-</p>
+<div class="small-12 columns">
+     <p>
+        <strong>Fecha de termino:</strong>
+        <%= @activity.end_date %>
+      </p>
+</div>
 
-<p>
-  <strong>Activity name:</strong>
-  <%= @activity.activity_name %>
-</p>
-
-<p>
-  <strong>Start date:</strong>
-  <%= @activity.start_date %>
-</p>
-
-<p>
-  <strong>End date:</strong>
-  <%= @activity.end_date %>
-</p>
-
-<p>
-  <strong>Responsibles:</strong>
+<div class="small-12 columns">
+  <p>
+  <strong>Responsables:</strong>
   <%= @activity.responsibles %>
 </p>
+</div>
+
+
+
+
+
+
+
+
+
 
 <%= link_to 'Edit', edit_activity_path(@activity) %> |
 <%= link_to 'Back', activities_path %>

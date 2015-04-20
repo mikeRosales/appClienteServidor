@@ -28,8 +28,10 @@
 
                <% if contact.project_id %>
                <% @nombre = Contact.find_by_id(contact.id).contact_name %>
-                  <a href="#"  data-reveal-id="<%= @nombre %>">Ver detalles</a>
-                  <div id="<%= @nombre %>" class="reveal-modal reveal-modal-custom" data-reveal>
+                 <%   @arroba = @nombre.gsub("@", "") %>
+                <%   @punto = @arroba.gsub(".", "") %>
+                  <a href="#"  data-reveal-id="<%= @punto %>">Ver detalles</a>
+                  <div id="<%= @punto %>" class="reveal-modal reveal-modal-custom" data-reveal>
                     <div class="row">
 
                       <section class="pop-head">
@@ -78,7 +80,9 @@
                         <br/>
                         <br/>
                       </section>
+
                     </div>
+
                   </div>
                   <%else%>
                   <% end %>

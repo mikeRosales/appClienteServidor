@@ -13,13 +13,14 @@ before_action :auth_user!
   # GET /projects
   # GET /projects.json
   def index
-    
+
      if admin_signed_in?
       @projects = Project.all
     else
-     @projects = current_user.projects
+     @projects =  Project.joins(:userprojects)
+
     end
-    
+
   end
 
   # GET /projects/1
@@ -31,6 +32,11 @@ before_action :auth_user!
   def new
     @project = Project.new
   end
+   def search
+  @project = Project.find_by_project_name params[:search_name]
+   render action: 'show'
+
+  end
 
   # GET /projects/1/edit
   def edit
@@ -41,10 +47,12 @@ before_action :auth_user!
   def create
     @project = Project.new(project_params)
     @project.user_id = current_user.id
-    
+
 
     respond_to do |format|
       if @project.save
+          @userproject = Userproject.new(userprojects_params)
+              @userproject.save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render :show, status: :created, location: @project }
       else
@@ -67,7 +75,11 @@ before_action :auth_user!
       end
     end
   end
-
+ def userprojects_params
+    params[:user_id] = current_user.id
+   params[:project_id] = @project.id
+    params.permit(:user_id, :project_id)
+  end
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
@@ -86,6 +98,6 @@ before_action :auth_user!
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:project_name, :company, :description, :participants)
+      params.require(:project).permit(:project_name, :company, :dateStart, :dateEnd, :description)
     end
 end

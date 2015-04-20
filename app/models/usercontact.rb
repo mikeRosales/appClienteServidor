@@ -1,4 +1,4 @@
 class Usercontact < ActiveRecord::Base
-	belongs_to :"users"
-	belongs_to :"contacts"
+	belongs_to :"projects"
+
 end

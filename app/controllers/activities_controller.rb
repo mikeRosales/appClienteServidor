@@ -1,11 +1,22 @@
 class ActivitiesController < ApplicationController
-    before_action :authenticate_user!
+before_action :auth_user!
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
-
+def auth_user!
+      if admin_signed_in?
+        authenticate_admin!
+      else
+        authenticate_user!
+      end
+  end
   # GET /activities
   # GET /activities.json
   def index
-    @activities = Activity.all
+     if admin_signed_in?
+      @activities = Activity.all
+    else
+     @activities =  Activity.joins(:useractivities)
+
+    end
   end
 
   # GET /activities/1
@@ -29,6 +40,8 @@ class ActivitiesController < ApplicationController
 
     respond_to do |format|
       if @activity.save
+         @useractivities = Useractivities.new(useractivities_params)
+              @useractivities.save
         format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
         format.json { render :show, status: :created, location: @activity }
       else
@@ -51,6 +64,11 @@ class ActivitiesController < ApplicationController
       end
     end
   end
+   def useractivities_params
+    params[:user_id] = current_user.id
+   params[:activity_id] = @activity.id
+    params.permit(:user_id, :activity_id)
+  end
 
   # DELETE /activities/1
   # DELETE /activities/1.json
@@ -70,6 +88,6 @@ class ActivitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
-      params.require(:activity).permit(:activity_name, :start_date, :end_date, :responsibles)
+      params.require(:activity).permit(:activity_name, :start_date, :end_date, :responsibles,:status)
     end
 end
