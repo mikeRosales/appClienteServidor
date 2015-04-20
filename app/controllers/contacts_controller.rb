@@ -44,12 +44,21 @@ before_action :auth_user!
   # POST /contacts.json
   def create
     @contact = Contact.new(contact_params)
-    @contact.user_id = current_user.id
+     @contactoE = User.find_by('email = ?', @contact.contact_name)
+
+     if @contactoE.blank?
+          flash[:alert] = "El usuario no existe"
+          render :action => :new
+
+    else
+       @contact.user_id = current_user.id
 
         respond_to do |format|
           if @contact.save
               @usercontact = Usercontact.new(usercontacts_params)
-
+              @usercontact.save
+           @userproject = Userproject.new(userprojects_params)
+              @userproject.save
            format.html {  redirect_to @contact, notice: 'Contacto agregado correctamente.' }
 
              format.json { render :show, status: :created, location: @contact }
@@ -57,11 +66,18 @@ before_action :auth_user!
           format.html { render :new }
           format.json { render json: @contact.errors, status: :unprocessable_entity }
       end
+       end
 
-  end
+    end
+
+
 
 end
-
+ def userprojects_params
+    params[:user_id] =User.find_by('email = ?', @contact.contact_name).id
+   params[:project_id] = @contact.project_id
+    params.permit(:user_id, :project_id)
+  end
   # PATCH/PUT /contacts/1
   # PATCH/PUT /contacts/1.json
   def update
